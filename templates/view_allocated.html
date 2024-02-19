@@ -1,0 +1,26 @@
+{% extends 'admin_home.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="328" border="1">
+    <tr>
+      <td width="33">S/No</td>
+      <td width="63">Caregiver</td>
+      <td width="77">Allocated eldery person</td>
+      <td width="56">Start Date</td>
+      <td width="65">End Date</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.CAREGIVER.name }}</td>
+      <td>{{i.ELDERLY_PERSON.name}}</td>
+      <td>{{ i.start_date }}</td>
+      <td>{{ i.end_date}}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'admin_home.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/add_allocation_post/">
+{% csrf_token %}
+<input type="hidden" name="c_id" value="{{ cid }}"/>
+  <p>Elderly Person Name
+    <label for="elderly_person"></label>
+    <select name="elderly_person" id="elderly_person">
+        {% for i in data %}
+        <option value="{{ i.id }}">{{ i.name }}</option>
+        {% endfor %}
+    </select>
+  </p>Ending Date
+<input type="date" name="enddate" id="enddate">
+  <p> 
+      <input type="submit" name="submit" id="submit" value="Submit" />
+    <br />
+  </p>
+  
+</form>
+</body>
+{% endblock %}

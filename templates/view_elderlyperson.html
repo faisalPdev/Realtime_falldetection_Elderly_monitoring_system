@@ -1,0 +1,47 @@
+{% extends 'admin_home.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+        <td><input type="submit" name="button" id="button" value="Search" /></td>
+    </tr></table>
+        <table width="200" border="1">
+          <tr>
+            <td>S/no</td>
+            <td>Name</td>
+            <td>Address</td>
+            <td>Gmail</td>
+            <td>Phone No</td>
+            <td>Guradian</td>
+            <td>Gender</td>
+            <td>Age</td>
+            <td>photo</td>
+
+          </tr>
+          {% for i in data  %}
+          <tr>
+            <td>&nbsp;{{ forloop.counter}}</td>
+            <td>{{ i.name }}</td>
+              <td>{{ i.place }}<br>{{ i.pin }}<br>{{ i.post }}<br>{{ i.Housename }}<br></td>
+            <td>{{ i.gmail }}</td>
+            <td>{{ i.phone_no }}</td>
+            <td>{{ i.guardian_details }}</td>
+            <td>{{ i.Gender }}</td>
+            <td>{{ i.age}}</td>
+            <td><img src="{{ i.photo }}" height="80px" width="80px"></td>
+            <td><a href="/myapp/edit_elderlyperson/{{ i.id }}">Edit</a></td>
+            <td><a href="/myapp/delete_elderlyperson/{{ i.id }}">Delete</a></td>
+            
+            
+          </tr>
+            {% endfor %}
+      </table>
+
+</form>
+
+</body>
+{% endblock %}
