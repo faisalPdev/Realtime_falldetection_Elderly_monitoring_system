@@ -8,44 +8,44 @@
     <tr>
       <th class="text-dark">Name</th>
       <td><label for="textfield"></label>
-      <input type="text" name="textfield" id="textfield" class="form-control" /></td>
+      <input type="text" name="textfield" id="textfield" class="form-control" pattern="[A-Z a-z]+" required /></td>
     </tr>
     <tr>
       <th class="text-dark">Place</th>
       <td><label for="textfield2"></label>
-      <input type="text" name="textfield2" id="textfield2" class="form-control" /></td>
+      <input type="text" name="textfield2" id="textfield2" class="form-control" required/></td>
     </tr>
     <tr>
       <th class="text-dark">Pin</th>
       <td><label for="textfield3"></label>
-      <input type="text" name="textfield3" id="textfield3" class="form-control"/></td>
+      <input type="text" name="textfield3" id="textfield3" class="form-control" pattern="[0-9]{6}" maxlength="6" required/></td>
     </tr>
     <tr>
       <th class="text-dark">Post</th>
       <td><label for="textfield4"></label>
-      <input type="text" name="textfield4" id="textfield4" class="form-control"/></td>
+      <input type="text" name="textfield4" id="textfield4" class="form-control" required/></td>
     </tr>
     <tr>
       <th class="text-dark">HouseName</th>
       <td><label for="textfield5"></label>
-      <input type="text" name="textfield5" id="textfield5" class="form-control"/></td>
+      <input type="text" name="textfield5" id="textfield5" class="form-control" required/></td>
     </tr>
     <tr>
       <th class="text-dark">Gmail</th>
       <td><label for="textfield6"></label>
-      <input type="text" name="textfield6" id="textfield6" class="form-control"/></td>
+      <input type="email" name="textfield6" id="textfield6" class="form-control" required/></td>
     </tr>
     <tr>
       <th class="text-dark">Phone No</th>
       <td><label for="textfield7"></label>
-      <input type="text" name="textfield7" id="textfield7" class="form-control"/></td>
+      <input type="text" name="textfield7" id="textfield7" class="form-control" pattern="[0-9]"/></td>
     </tr>
     <tr>
       <th class="text-dark">Gender</th>
       <th><label for="textfield8"></label>
         <p>
           <label>
-            <input type="radio" name="RadioGroup1" value="Male" id="RadioGroup1_0" class="form-control" />
+            <input type="radio" name="RadioGroup1" value="Male" id="RadioGroup1_0" class="form-control" checked />
             Male</label>
           <br />
           <label>
@@ -62,12 +62,12 @@
     <tr>
       <th class="text-dark">Age</th>
       <td><label for="textfield9"></label>
-      <input type="text" name="textfield9" id="textfield9" class="form-control"/></td>
+      <input type="text" name="textfield9" id="textfield9" class="form-control" pattern="[0-9]{10}" maxlength="10" required/></td>
     </tr>
     <tr>
       <th class="text-dark">Photo</th>
       <td><label for="fileField"></label>
-      <input type="file" name="fileField" id="fileField" class="form-control" /></td>
+      <input type="file" name="fileField" id="fileField" class="form-control"required/></td>
     </tr>
     <tr>
       <th> </th>

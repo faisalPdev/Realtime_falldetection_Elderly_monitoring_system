@@ -9,13 +9,13 @@
 <input type="hidden" name="c_id" value="{{ cid }}" class="form-control"/>
     <p><b>Elderly Person Name</b>
     <label for="elderly_person"></label>
-    <select name="elderly_person" id="elderly_person">
+    <select  name="elderly_person" id="elderly_person" required>
         {% for i in data %}
         <option value="{{ i.id }}">{{ i.name }}</option>
         {% endfor %}
     </select>
   </p><b>Ending Date</b>
-<input type="date" name="enddate" id="enddate">
+<input type="date" name="enddate" id="enddate" required>
   <p> 
       <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-success" />
     <br />

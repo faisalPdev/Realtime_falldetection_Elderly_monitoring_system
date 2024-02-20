@@ -341,7 +341,7 @@ def login_flutter(request):
         return JsonResponse({'status':'no'})
 
 
-# -----------------------------------------------------------Caregiver----------------------------------------------------------------------------
+# -----------------------------------------------------------| Caregiver |----------------------------------------------------------------------------
 
 def view_allocated_elderly_person(request):
     lid=request.POST['lid']
@@ -365,7 +365,7 @@ def medication_remainder_tracking(request):
     med.Date=date
     med.Time=time
     med.ELDERLYPERSON_id=ELDERLYPERSON
-    med.Name=med_name
+    med.Name_medicine=med_name
     med.save()
     return JsonResponse({'status':'ok'})
 
@@ -374,7 +374,7 @@ def view_profile_caregiver(request):
     a=Caregiver.objects.get(LOGIN_id=lid)
     return JsonResponse({'status':'ok','name':a.name,'place':a.place,'pin':a.pin,'post':a.post,'Housename':a.Housename,'gmail':a.gmail,'phone_no':a.phone_no,'Gender':a.Gender,'age':a.age,'photo':a.photo})
 
-def change_password_caregiver(request):
+def change_password_flutter(request):
     lid=request.POST['lid']
     old_password=request.POST['old_password']
     new_password=request.POST['new_password']
@@ -414,7 +414,14 @@ def communication_elderlyperson(request):
     return JsonResponse({'status':'ok'})
 
 def medication_remainder(request):
-    return JsonResponse({'status':'ok'})
+    lid = request.POST['lid']
+    a = Medication_remainder.objects.filter(ELDERLYPERSON__LOGIN_id=lid)
+    l=[]
+    for i in a:
+        l.append({'id':i.id,'date':i.Date,'time':i.Time,'name_medicine':'Name_medicine'})
+    return JsonResponse(
+        {'status': 'ok','data':l})
+
 
 def view_profile_elderlyperson(request):
     lid = request.POST['lid']
@@ -424,24 +431,7 @@ def view_profile_elderlyperson(request):
          'gmail': a.gmail, 'phone_no': a.phone_no, 'Gender': a.Gender, 'age': a.age, 'photo': a.photo,'guardian_details':a.guardian_details})
 
 
-def change_password_elderlyperson(request):
-    lid = request.POST['lid']
-    old_password = request.POST['old_password']
-    new_password = request.POST['new_password']
-    confirm_password = request.POST['confirm_password']
-    change = Login.objects.filter(id=lid, Password=old_password)
-    if change.exists():
-        c = Login.objects.get(id=lid, Password=old_password)
-        if c is not None:
-            if new_password == confirm_password:
-                c = Login.objects.filter(id=lid, Password=old_password).update(Password=confirm_password)
-                return JsonResponse({'status': 'ok'})
-            else:
-                return JsonResponse({'status': 'no'})
-        else:
-            return JsonResponse({'status': 'no'})
-    else:
-        return JsonResponse({'status': 'no'})
+
 
 
 

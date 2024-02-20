@@ -52,7 +52,7 @@ urlpatterns = [
     path('communication/',views.communication_caregiver),
     path('medication_remainder_tracking/',views.medication_remainder_tracking),
     path('view_profile_caregiver/',views.view_profile_caregiver),
-    path('change_password_caregiver/',views.change_password_caregiver),
+    path('change_password_flutter/',views.change_password_flutter),
 
     #--------------------------- Elderly Person urls------------------
     path('view_allocated_caregiver/', views.view_allocated_elderly_person),
@@ -60,7 +60,7 @@ urlpatterns = [
     path('communication_elderlyperson/',views.communication_elderlyperson),
     path('medication_remainder/',views.medication_remainder),
     path('view_profile_elderlyperson/',views.view_profile_elderlyperson),
-    path('change_password_elderlyperson/',views.change_password_elderlyperson),
+
 
 ]
 
