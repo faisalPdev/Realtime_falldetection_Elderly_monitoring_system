@@ -41,6 +41,9 @@ urlpatterns = [
     path('edit_caregiver_post/', views.edit_caregiver_post),
     path('delete_caregiver/<id>',views.delete_caregiver),
     path('delete_elderlyperson/<id>', views.delete_elderlyperson),
+    path('search_caregiver/',views.search_caregiver),
+    path('search_elderlyperson/',views.search_elderlyperson),
+    path('logout/',views.logout),
 
 ]
 

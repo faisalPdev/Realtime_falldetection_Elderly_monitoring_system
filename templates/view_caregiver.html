@@ -2,15 +2,19 @@
 {% block body %}
 
 <body>
-<form id="form1" name="form1" method="post" action="">
+
+<form id="form1" name="form1" method="post" action="/myapp/search_caregiver/">
+
   <table class="pull-left">
+      {% csrf_token %}
     <tr>
-      <td><label for="textfield"></label>
-      <input type="text" name="textfield" id="textfield" /></td>
-        <td><input type="submit" name="button" id="button" value="Search" class="btn-success" /></td>
+      <td>
+      <input type="text" name="textfield" id="textfield" class="form-control"/></td>
+        <td><input type="submit" name="button" id="button" value="Search" class="btn btn-success" /></td>
     </tr>
   </table>
-        <table class="table table-bordered ">
+<br><br>
+        <table class="table table-bordered border">
           <tr>
             <th class="text-dark">S/no</th>
             <th class="text-dark">Name</th>
@@ -23,17 +27,17 @@
           </tr>
             {% for i in data  %}
           <tr>
-            <td>&nbsp;{{ forloop.counter}}</td>
-            <td>{{ i.name }}</td>
-              <td>{{ i.place }}<br>{{ i.pin }}<br>{{ i.post }}<br>{{ i.Housename }}<br></td>
-            <td>{{ i.gmail }}</td>
-            <td>{{ i.phone_no }}</td>
-            <td>{{ i.Gender }}</td>
-            <td>{{ i.age}}</td>
-            <td><img src="{{ i.photo }}" height="80px" width="80px"> </td>
-            <td><a href="/myapp/edit_caregiver/{{ i.id }} "class="btn btn-success">Edit</a></td>
-            <td><a href="/myapp/add_allocation/{{ i.id }}" class="btn btn-info">Assign Elderly Person</a></td>
-            <td><a href="/myapp/delete_caregiver/{{ i.id }}"class="btn btn-danger">Delete</a></td>
+            <td class="text-dark table-bordered">&nbsp;{{ forloop.counter}}</td>
+            <td class="text-dark">{{ i.name }}</td>
+              <td class="text-dark">{{ i.place }}<br>{{ i.pin }}<br>{{ i.post }}<br>{{ i.Housename }}<br></td>
+            <td class="text-dark">{{ i.gmail }}</td>
+            <td class="text-dark">{{ i.phone_no }}</td>
+            <td class="text-dark">{{ i.Gender }}</td>
+            <td class="text-dark">{{ i.age}}</td>
+            <td class="text-dark"><img src="{{ i.photo }}" height="80px" width="80px"> </td>
+            <td class="text-dark"><a href="/myapp/edit_caregiver/{{ i.id }} "class="btn btn-success">Edit</a></td>
+            <td class="text-dark"><a href="/myapp/add_allocation/{{ i.id }}" class="btn btn-info">Assign Elderly Person</a></td>
+            <td class="text-dark"><a href="/myapp/delete_caregiver/{{ i.id }}"class="btn btn-danger">Delete</a></td>
             
             
           </tr>

@@ -26,9 +26,15 @@ def admin_home(request):
     return render(request,'admin_home.html')
 
 def add_caregiver(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     return render(request,'add_caregiver.html')
 
 def add_caregiver_post(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     Name=request.POST['textfield']
     Place=request.POST['textfield2']
     Pin=request.POST['textfield3']
@@ -71,9 +77,15 @@ def add_caregiver_post(request):
     return HttpResponse('''<script>alert("Added succesfully");window.location='/myapp/view_caregiver/'</script>''')
 
 def add_elderlyperson(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     return render(request,'add_elderlyperson.html')
 
 def add_elderlyperson_post(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     Name = request.POST['textfield']
     Place = request.POST['textfield2']
     Pin = request.POST['textfield3']
@@ -117,9 +129,15 @@ def add_elderlyperson_post(request):
     return HttpResponse('''<script>alert("Added succesfully");window.location='/myapp/view_elderlyperson/'</script>''')
 
 def change_password(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     return render(request,'change_password.html')
 
 def change_password_post(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     Current_password = request.POST['textfield']
     New_password = request.POST['textfield2']
     Confirm_password=request.POST['textfield3']
@@ -132,10 +150,16 @@ def change_password_post(request):
 
 
 def add_allocation(request,cid):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res=Elderly_person.objects.all()
     return render(request,'add_allocation.html',{"data":res,"cid":cid})
 
 def add_allocation_post(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     elder_id=request.POST['elderly_person']
     care_id=request.POST['c_id']
     enddate=request.POST['enddate']
@@ -148,22 +172,54 @@ def add_allocation_post(request):
     return HttpResponse('''<script>alert("Succesfuly adedd the allocation");window.location='/myapp/view_allocated/'</script>''')
 
 def view_allocated(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res=Allocation.objects.all()
     return render(request,'view_allocated.html',{"data":res})
 
 def view_caregiver(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res=Caregiver.objects.all()
     return render(request,'view_caregiver.html',{"data":res})
 
+def search_caregiver(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
+    s=request.POST['textfield']
+    res = Caregiver.objects.filter(name__icontains=s)
+    return render(request, 'view_caregiver.html', {"data": res})
+
 def view_elderlyperson(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res=Elderly_person.objects.all()
     return render(request,'view_elderlyperson.html',{"data":res})
 
+def search_elderlyperson(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
+    s=request.POST['textfield']
+    res = Elderly_person.objects.filter(name__icontains=s)
+    return render(request, 'view_elderlyperson.html', {"data": res})
+
+
 def edit_caregiver(request,id):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res=Caregiver.objects.get(id=id)
     return render(request,'edit_caregiver.html',{"data":res})
 
 def edit_caregiver_post(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     Name = request.POST['textfield']
     Place = request.POST['textfield2']
     Pin = request.POST['textfield3']
@@ -198,14 +254,23 @@ def edit_caregiver_post(request):
     return HttpResponse('''<script>alert("Succesfully edited the Details");window.location='/myapp/view_caregiver/'</script>''')
 
 def delete_caregiver(request,id):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res = Caregiver.objects.filter(id=id).delete()
     return HttpResponse('''<script>alert("Deleted succesfully");window.location='/myapp/view_caregiver/'</script>''')
 
 def edit_elderlyperson(request,id):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res=Elderly_person.objects.get(id=id)
     return render(request,'edit_elderlyperson.html',{"data":res})
 
 def edit_elderlyperson_post(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     Name = request.POST['textfield']
     Place = request.POST['textfield2']
     Pin = request.POST['textfield3']
@@ -243,9 +308,16 @@ def edit_elderlyperson_post(request):
     return HttpResponse('''<script>alert("Succesfully edited the Details");window.location='/myapp/view_elderlyperson/'</script>''')
 
 def delete_elderlyperson(request,id):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
     res=Elderly_person.objects.filter(id=id).delete()
 
     return HttpResponse('''<script>alert("Deleted succesfully");window.location='/myapp/view_elderlyperson/'</script>''')
 
-# def logout(request):
-#     ret
+def logout(request):
+    if request.session['lid']=='':
+        return HttpResponse('''<script>alert("Login Required");window.location='/myapp/login/'</script>''')
+
+    request.session['lid']=''
+    return redirect('/myapp/login/')
