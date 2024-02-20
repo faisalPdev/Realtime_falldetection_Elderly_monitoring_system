@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -321,3 +321,127 @@ def logout(request):
 
     request.session['lid']=''
     return redirect('/myapp/login/')
+
+#---------------------------------------------------Flutter Login-----------------------------------------------------------------------------------
+def login_flutter(request):
+    username=request.POST['username']
+    password=request.POST['password']
+    login=Login.objects.filter(username=username,Password=password)
+    if login.exists():
+        log=Login.objects.get(username=username,Password=password)
+        if log.type=='caregiver':
+            lid=log.id
+            return JsonResponse({'status':'ok','lid':str(lid),'type':'caregiver'})
+        elif log.type=='Elderlyperson':
+            lid=log.id
+            return JsonResponse({'status':'ok','lid':str(lid),'type':'Elderlyperson'})
+        else:
+            return JsonResponse({'status': 'no'})
+    else:
+        return JsonResponse({'status':'no'})
+
+
+# -----------------------------------------------------------Caregiver----------------------------------------------------------------------------
+
+def view_allocated_elderly_person(request):
+    lid=request.POST['lid']
+    alloc=Allocation.objects.get(ELDERLY_PERSON__LOGIN_id=lid)
+
+    return JsonResponse({'status':'ok','start_date':alloc.start_date,'end_date':alloc.end_date,'name':alloc.ELDERLY_PERSON.name,'place':alloc.place,'pin':alloc.pin,'post':alloc.post,'Housename':alloc.Housename,'gmail':alloc.gmail,'phone_no':alloc.phone_no,'Gender':alloc.Gender,'age':alloc.age,'photo':alloc.photo,'guardian_details':alloc.guardian_details})
+
+
+def manual_alert(request):
+    return JsonResponse({'status':'ok'})
+
+def communication_caregiver(request):
+    return JsonResponse({'status':'ok'})
+
+def medication_remainder_tracking(request):
+    date=request.POST['date']
+    med_name=request.POST['med_name']
+    time=request.POST['time']
+    ELDERLYPERSON=request.POST['ELDERLYPERSON']
+    med=Medication_remainder()
+    med.Date=date
+    med.Time=time
+    med.ELDERLYPERSON_id=ELDERLYPERSON
+    med.Name=med_name
+    med.save()
+    return JsonResponse({'status':'ok'})
+
+def view_profile_caregiver(request):
+    lid=request.POST['lid']
+    a=Caregiver.objects.get(LOGIN_id=lid)
+    return JsonResponse({'status':'ok','name':a.name,'place':a.place,'pin':a.pin,'post':a.post,'Housename':a.Housename,'gmail':a.gmail,'phone_no':a.phone_no,'Gender':a.Gender,'age':a.age,'photo':a.photo})
+
+def change_password_caregiver(request):
+    lid=request.POST['lid']
+    old_password=request.POST['old_password']
+    new_password=request.POST['new_password']
+    confirm_password=request.POST['confirm_password']
+    change=Login.objects.filter(id=lid,Password=old_password)
+    if change.exists():
+        c=Login.objects.get(id=lid,Password=old_password)
+        if c is not None:
+            if new_password==confirm_password:
+                c=Login.objects.filter(id=lid,Password=old_password).update(Password=confirm_password)
+                return JsonResponse({'status': 'ok'})
+            else:
+                return JsonResponse({'status':'no'})
+        else:
+            return JsonResponse({'status': 'no'})
+    else:
+        return JsonResponse({'status':'no'})
+
+# -------------------------------------Elderly Person-------------------------------------
+
+
+
+def view_allocated_caregiver(request):
+    lid = request.POST['lid']
+    alloc = Allocation.objects.get(CAREGIVER__LOGIN_id=lid)
+
+    return JsonResponse(
+        {'status': 'ok', 'start_date': alloc.start_date, 'end_date': alloc.end_date, 'name': alloc.ELDERLY_PERSON.name,
+         'place': alloc.place, 'pin': alloc.pin, 'post': alloc.post, 'Housename': alloc.Housename, 'gmail': alloc.gmail,
+         'phone_no': alloc.phone_no, 'Gender': alloc.Gender, 'age': alloc.age, 'photo': alloc.photo})
+
+
+def sos_manual_alert(request):
+    return JsonResponse({'status':'ok'})
+
+def communication_elderlyperson(request):
+    return JsonResponse({'status':'ok'})
+
+def medication_remainder(request):
+    return JsonResponse({'status':'ok'})
+
+def view_profile_elderlyperson(request):
+    lid = request.POST['lid']
+    a = Elderly_person.objects.get(LOGIN_id=lid)
+    return JsonResponse(
+        {'status': 'ok', 'name': a.name, 'place': a.place, 'pin': a.pin, 'post': a.post, 'Housename': a.Housename,
+         'gmail': a.gmail, 'phone_no': a.phone_no, 'Gender': a.Gender, 'age': a.age, 'photo': a.photo,'guardian_details':a.guardian_details})
+
+
+def change_password_elderlyperson(request):
+    lid = request.POST['lid']
+    old_password = request.POST['old_password']
+    new_password = request.POST['new_password']
+    confirm_password = request.POST['confirm_password']
+    change = Login.objects.filter(id=lid, Password=old_password)
+    if change.exists():
+        c = Login.objects.get(id=lid, Password=old_password)
+        if c is not None:
+            if new_password == confirm_password:
+                c = Login.objects.filter(id=lid, Password=old_password).update(Password=confirm_password)
+                return JsonResponse({'status': 'ok'})
+            else:
+                return JsonResponse({'status': 'no'})
+        else:
+            return JsonResponse({'status': 'no'})
+    else:
+        return JsonResponse({'status': 'no'})
+
+
+

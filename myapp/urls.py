@@ -45,5 +45,22 @@ urlpatterns = [
     path('search_elderlyperson/',views.search_elderlyperson),
     path('logout/',views.logout),
 
+    # ---------------------Caregiver urls-------------------
+    path('login_flutter/',views.login_flutter),
+    path('view_allocated_elderly_person/', views.view_allocated_elderly_person),
+    path('manual_alert/', views.manual_alert),
+    path('communication/',views.communication_caregiver),
+    path('medication_remainder_tracking/',views.medication_remainder_tracking),
+    path('view_profile_caregiver/',views.view_profile_caregiver),
+    path('change_password_caregiver/',views.change_password_caregiver),
+
+    #--------------------------- Elderly Person urls------------------
+    path('view_allocated_caregiver/', views.view_allocated_elderly_person),
+    path('sos_manual_alert/', views.sos_manual_alert),
+    path('communication_elderlyperson/',views.communication_elderlyperson),
+    path('medication_remainder/',views.medication_remainder),
+    path('view_profile_elderlyperson/',views.view_profile_elderlyperson),
+    path('change_password_elderlyperson/',views.change_password_elderlyperson),
+
 ]
 
