@@ -68,7 +68,7 @@ def add_caregiver_post(request):
     c.photo=path
     c.save()
 
-    return HttpResponse('OK')
+    return HttpResponse('''<script>alert("Added succesfully");window.location='/myapp/view_caregiver/'</script>''')
 
 def add_elderlyperson(request):
     return render(request,'add_elderlyperson.html')
@@ -114,7 +114,7 @@ def add_elderlyperson_post(request):
     c.photo = path
     c.save()
 
-    return HttpResponse('OK')
+    return HttpResponse('''<script>alert("Added succesfully");window.location='/myapp/view_elderlyperson/'</script>''')
 
 def change_password(request):
     return render(request,'change_password.html')
@@ -195,11 +195,11 @@ def edit_caregiver_post(request):
     c.Gender = Gender
     c.age = Age
     c.save()
-    return HttpResponse('OK')
+    return HttpResponse('''<script>alert("Succesfully edited the Details");window.location='/myapp/view_caregiver/'</script>''')
 
 def delete_caregiver(request,id):
     res = Caregiver.objects.filter(id=id).delete()
-    return HttpResponse('OK')
+    return HttpResponse('''<script>alert("Deleted succesfully");window.location='/myapp/view_caregiver/'</script>''')
 
 def edit_elderlyperson(request,id):
     res=Elderly_person.objects.get(id=id)
@@ -240,12 +240,12 @@ def edit_elderlyperson_post(request):
     c.age = Age
     c.save()
 
-    return HttpResponse('OK')
+    return HttpResponse('''<script>alert("Succesfully edited the Details");window.location='/myapp/view_elderlyperson/'</script>''')
 
 def delete_elderlyperson(request,id):
     res=Elderly_person.objects.filter(id=id).delete()
 
-    return HttpResponse('OK')
+    return HttpResponse('''<script>alert("Deleted succesfully");window.location='/myapp/view_elderlyperson/'</script>''')
 
 # def logout(request):
 #     ret

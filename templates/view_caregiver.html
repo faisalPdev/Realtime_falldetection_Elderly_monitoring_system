@@ -3,23 +3,23 @@
 
 <body>
 <form id="form1" name="form1" method="post" action="">
-  <table width="200" border="1">
+  <table class="pull-left">
     <tr>
       <td><label for="textfield"></label>
       <input type="text" name="textfield" id="textfield" /></td>
-        <td><input type="submit" name="button" id="button" value="Search" /></td>
+        <td><input type="submit" name="button" id="button" value="Search" class="btn-success" /></td>
     </tr>
   </table>
-        <table width="200" border="1">
+        <table class="table table-bordered ">
           <tr>
-            <td>S/no</td>
-            <td>Name</td>
-            <td>Address</td>
-            <td>Gmail</td>
-            <td>Phone No</td>
-            <td>Gender</td>
-            <td>Age</td>
-            <td>photo</td>
+            <th class="text-dark">S/no</th>
+            <th class="text-dark">Name</th>
+            <th class="text-dark">Address</th>
+            <th class="text-dark">Gmail</th>
+            <th class="text-dark">Phone No</th>
+            <th class="text-dark">Gender</th>
+            <th class="text-dark">Age</th>
+            <th class="text-dark">photo</th>
           </tr>
             {% for i in data  %}
           <tr>
@@ -31,9 +31,9 @@
             <td>{{ i.Gender }}</td>
             <td>{{ i.age}}</td>
             <td><img src="{{ i.photo }}" height="80px" width="80px"> </td>
-            <td><a href="/myapp/edit_caregiver/{{ i.id }}">Edit</a></td>
-            <td><a href="/myapp/add_allocation/{{ i.id }}">Assign Elderly Person</a></td>
-            <td><a href="/myapp/delete_caregiver/{{ i.id }}">Delete</a></td>
+            <td><a href="/myapp/edit_caregiver/{{ i.id }} "class="btn btn-success">Edit</a></td>
+            <td><a href="/myapp/add_allocation/{{ i.id }}" class="btn btn-info">Assign Elderly Person</a></td>
+            <td><a href="/myapp/delete_caregiver/{{ i.id }}"class="btn btn-danger">Delete</a></td>
             
             
           </tr>
