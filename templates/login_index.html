@@ -25,11 +25,12 @@
     </script>
     <!-- //Meta-Tags -->
     <!-- Index-Page-CSS -->
-    <link rel="stylesheet" href="/static/login/css/style.css" type="text/css" media="all">
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}" type="text/css" media="all">
     <!-- //Custom-Stylesheet-Links -->
     <!--fonts -->
     <!-- //fonts -->
-    <link rel="stylesheet" href="/static/login/css/font-awesome.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'login/css/font-awesome.min.css' %}" type="text/css" media="all">
     <!-- //Font-Awesome-File-Links -->
 	
 	<!-- Google fonts -->
@@ -46,15 +47,15 @@
 <section class="main">
 	<div class="layer">
 		
-		<div class="bottom-grid">
+		<div class="bottom-grid text-center">
 			<div class="logo">
-				<h1> <a href="index.html"><span class="fa fa-key"></span> Key</a></h1>
+				<h1> <a href="index.html"><span class="fa fa-key"></span><span style="color:#fc636b;">Admin</span> Login</a></h1>
 			</div>
 
 		</div>
-		<div class="content-w3ls">
-			<div class="text-center icon">
-				<span class="fa fa-html5"></span>
+		<div class="content-w3ls text-center">
+			<div style="color:white; font-size:30px;padding:50px;">
+				Real Time <span style="color:#fc636b;">Fall Detection</span>
 			</div>
 			<div class="content-bottom">
 				<form action="/myapp/login_post/" method="post">
@@ -82,18 +83,18 @@
 								keep Logged in
 							</label>
 						</li>
-						<li>
+						{% comment %} <li>
 							<a href="#" class="text-right">forgot password?</a>
-						</li>
+						</li> {% endcomment %}
 						<li class="clearfix"></li>
 					</ul>
 					<ul class="list-login-bottom">
-						<li class="">
+						{% comment %} <li class="">
 							<a href="#" class="">Create Account</a>
-						</li>
-						<li class="">
+						</li> {% endcomment %}
+						{% comment %} <li class="">
 							<a href="#" class="text-right">Need Help?</a>
-						</li>
+						</li> {% endcomment %}
 						<li class="clearfix"></li>
 					</ul>
 				</form>
@@ -102,7 +103,7 @@
 		<div class="bottom-grid1">
 			<div class="links">
 				<ul class="links-unordered-list">
-					<li class="">
+					{% comment %} <li class="">
 						<a href="#" class="">About Us</a>
 					</li>
 					<li class="">
@@ -110,11 +111,11 @@
 					</li>
 					<li class="">
 						<a href="#" class="">Terms of Use</a>
-					</li>
+					</li> {% endcomment %}
 				</ul>
 			</div>
 			<div class="copyright">
-				<p>© 2019 Key. All rights reserved
+				<p>© 2024. All rights reserved
 				</p>
 			</div>
 		</div>

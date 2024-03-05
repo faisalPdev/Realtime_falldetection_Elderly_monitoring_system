@@ -1699,7 +1699,8 @@ pre code {
 }
 
 .table-bordered {
-  border: 1px solid #dee2e6;
+  border: 1px solid black;
+  /*border: 1px solid #dee2e6;*/
 }
 
 .table-bordered th,

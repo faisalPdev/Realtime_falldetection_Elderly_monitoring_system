@@ -1,7 +1,11 @@
 {% extends 'admin_home.html' %}
 {% block body %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <body>
+  
+  <div class="text-center pb-5"><h3 class="text-danger font-weight-bold"><span><i class="fa-solid fa-users-viewfinder fa-2xl"></i></span> Available Allocations</h3></div>
+
 <form id="form1" name="form1" method="post" action="">
   <table class="table table-bordered border">
     <tr>
@@ -13,11 +17,11 @@
     </tr>
       {% for i in data %}
     <tr>
-      <td>{{ forloop.counter }}</td>
-      <td>{{ i.CAREGIVER.name }}</td>
-      <td>{{i.ELDERLY_PERSON.name}}</td>
-      <td>{{ i.start_date }}</td>
-      <td>{{ i.end_date}}</td>
+      <td class="text-dark">{{ forloop.counter }}</td>
+      <td class="text-dark">{{ i.CAREGIVER.name }}</td>
+      <td class="text-dark">{{i.ELDERLY_PERSON.name}}</td>
+      <td class="text-dark">{{ i.start_date }}</td>
+      <td class="text-dark">{{ i.end_date}}</td>
     </tr>
       {% endfor %}
   </table>

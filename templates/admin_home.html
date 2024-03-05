@@ -13,6 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<meta charset="utf-8">
 	<meta name="keywords" content="Home Loan Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -22,6 +23,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 	<!-- Bootstrap Core CSS -->
 	<link href="/static/home/css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -63,11 +65,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 {#		</div>#}
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light">
+				
 				<h1>
-					<a class="navbar-brand text-capitalize text-danger" href="index.html">
+					<span><i class="fa-solid fa-person-cane fa-2xl" style="color: #ff0019;"></i></span>
+					<a class="navbar-brand text-capitalize text-danger " href="#">
 						Real Time Fall Detection
 					</a>
 				</h1>
+				
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 				    aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -76,7 +81,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav text-center  ml-lg-auto">
 						<li class="nav-item active  mr-3">
-							<a class="nav-link" href="index.html">Home
+							<a class="nav-link" href="/myapp/admin_home/">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
@@ -106,6 +111,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<a class="dropdown-item" href="/myapp/view_elderlyperson/#abc">View</a>
 							</div>
 						</li>
+						
                         <li class="nav-item dropdown mr-3">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
 							    aria-expanded="false">
@@ -114,6 +120,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="/myapp/view_allocated/#abc">Allocations</a>
 								<a class="dropdown-item" href="/myapp/change_password/">Change Password</a>
+								<a class="dropdown-item" href="/myapp/change_password/">Detection Module</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -125,51 +132,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</header>
 	<!-- //header -->
-	<!-- banner -->
-	<section class="banner">
-		<div class="callbacks_container">
-			<ul class="rslides" id="slider3">
-				<li>
-					<div class="slider-info bg1">
-						<div class="banner-text container">
-							<h4 class="movetxt text-left mb-3 agile-title text-capitalize">Don't Miss Your Perfect House!</h4>
-							<p class="text-white mb-3">Donec consequat sapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac metus at, semper varius orci. Nulla accumsan ac elit in congue.</p>
-							<a class="bt text-capitalize" href="about.html" role="button"> read more
-								<i class="fas fa-angle-double-right"></i>
-							</a>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="slider-info bg2">
-						<div class="banner-text container">
-							<h4 class="movetxt text-left mb-3 agile-title text-capitalize">The Fastest Way To Your New Home</h4>
-							<p class="text-white mb-3">Donec consequat sapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac metus at, semper varius orci. Nulla accumsan ac elit in congue.</p>
-							<a class="bt text-capitalize" href="about.html" role="button"> read more
-								<i class="fas fa-angle-double-right"></i>
-							</a>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="slider-info bg3">
-						<div class="banner-text container">
-							<h4 class="movetxt text-left mb-3 agile-title text-capitalize">Make Your Dreams Come True</h4>
-							<p class="text-white mb-3">Donec consequat sapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac metus at, semper varius orci. Nulla accumsan ac elit in congue.</p>
-							<a class="bt text-capitalize" href="about.html" role="button"> read more
-								<i class="fas fa-angle-double-right"></i>
-							</a>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</section>
+{% if request.path == '/myapp/admin_home/' %}
+	{% include 'bannner.html' %}
+{% endif %}
 
-<br>
-<br>
-
-	<!-- //banner -->
+	
 {#	<!-- Products -->#}
 {#	<section class="services py-5">#}
 {#		<div class="container py-md-4 mt-md-3"> #}

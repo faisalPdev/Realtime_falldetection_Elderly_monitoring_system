@@ -1,7 +1,10 @@
 {% extends 'admin_home.html' %}
 {% block body %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <body>
+  <div class="text-center pb-5"><h3 class="text-danger font-weight-bold"><span><i class="fa-solid fa-users-viewfinder fa-2xl"></i></span> Add Allocations</h3></div>
+
 <div class="container">
 <form id="form1" name="form1" method="post" action="/myapp/add_allocation_post/">
 {% csrf_token %}

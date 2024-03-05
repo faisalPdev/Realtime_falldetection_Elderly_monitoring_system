@@ -1,7 +1,11 @@
 {% extends 'admin_home.html' %}
 {% block body %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <body>
+  <div class="text-center pb-5"><h3 class="text-danger font-weight-bold"><span><i class="fa-solid fa-hospital-user fa-2xl"></i></span> Add Caregiver</h3></div>
+  
+
 <form action="/myapp/add_caregiver_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
     {% csrf_token %}
   <table class="table table-bordered border">
@@ -38,7 +42,7 @@
     <tr>
       <th class="text-dark">Phone No</th>
       <td><label for="textfield7"></label>
-      <input type="text" name="textfield7" id="textfield7" class="form-control" pattern="[0-9]"/></td>
+      <input type="text" name="textfield7" id="textfield7" class="form-control" pattern="[0-9]{10}"/></td>
     </tr>
     <tr>
       <th class="text-dark">Gender</th>
@@ -62,7 +66,7 @@
     <tr>
       <th class="text-dark">Age</th>
       <td><label for="textfield9"></label>
-      <input type="text" name="textfield9" id="textfield9" class="form-control" pattern="[0-9]{10}" maxlength="10" required/></td>
+      <input type="text" name="textfield9" id="textfield9" class="form-control" pattern="[0-9]{2}" maxlength="10" required/></td>
     </tr>
     <tr>
       <th class="text-dark">Photo</th>
