@@ -22,7 +22,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
+
+		window.addEventListener("load", function () {
+			var preloader = document.getElementById('preloader');
+			preloader.style.display = 'none';
+		});
 	</script>
+	
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 	<!-- Bootstrap Core CSS -->
@@ -38,10 +44,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 	<link href="//fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
 	<!-- body -->
 	<link href="//fonts.googleapis.com/css?family=Poppins:400,500,600,700,800" rel="stylesheet">
+	
 </head>
 
 <body>
-	
+	{% include "loader.html" %}
 {#	<!-- header -->#}
 {#	<header>#}
 {#	<div class="top">#}

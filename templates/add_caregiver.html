@@ -10,10 +10,10 @@
 </style>
 <!-- style="background-color: white;" -->
 <body >
-  <div class="text-center pb-5"><h3 class="text-warning font-weight-bold"><span><i class="fa-solid fa-hospital-user fa-2xl"></i></span> Add Caregiver</h3></div>
+  <div class="text-center pb-5"><h3 class="text-danger font-weight-bold"><span><i class="fa-solid fa-hospital-user fa-2xl"></i></span> Add Caregiver</h3></div>
   
 
-<!-- <form action="/myapp/add_caregiver_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+<form action="/myapp/add_caregiver_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
     {% csrf_token %}
   <table class="table table-bordered border">
     <tr>
@@ -49,7 +49,7 @@
     <tr>
       <th class="text-dark">Phone No</th>
       <td><label for="textfield7"></label>
-      <input type="text" name="textfield7" id="textfield7" class="form-control" pattern="[0-9]{10}"/></td>
+      <input type="number" name="textfield7" id="textfield7" class="form-control" pattern="[0-9]{10}"/></td>
     </tr>
     <tr>
       <th class="text-dark">Gender</th>
@@ -85,13 +85,21 @@
       <th><input type="submit" name="button" id="button" value="Submit" class="form-control btn btn-info"/></th>
     </tr>
   </table>
-</form> -->
+</form>
 </body>
 
-<form>
+<!-- <form>
+  <div class="form-group">
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" id="inputName" placeholder="John ">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Place</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
+      <label for="inputPin">Email</label>
       <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
     </div>
     <div class="form-group col-md-6">
@@ -135,4 +143,4 @@
   <button type="submit" class="btn btn-warning btn-lg btn-block fo">Sign in</button>
 </form>
 
-{% endblock %}
+{% endblock %} -->
