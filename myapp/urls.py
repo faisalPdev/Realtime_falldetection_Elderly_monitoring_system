@@ -44,6 +44,7 @@ urlpatterns = [
     path('search_caregiver/',views.search_caregiver),
     path('search_elderlyperson/',views.search_elderlyperson),
     path('logout/',views.logout),
+    path('videolog/',views.videolog),
 
     # --------------------- fluttter Caregiver urls-------------------
     path('login_flutter/',views.login_flutter),

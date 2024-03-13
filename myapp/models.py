@@ -51,7 +51,9 @@ class Medication_remainder(models.Model):
     Time=models.TimeField()
     Date=models.DateField()
 
-
+class VideoLog(models.Model):
+    video=models.FileField(upload_to='videos/')
+    time=models.TimeField(auto_now_add=True)
 
 
 

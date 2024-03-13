@@ -3,6 +3,7 @@ from datetime import datetime
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
+from .models import VideoLog
 
 # Create your views here.
 from myapp.models import *
@@ -321,6 +322,11 @@ def logout(request):
 
     request.session['lid']=''
     return redirect('/myapp/login/')
+
+def videolog(request):
+    videos=VideoLog.objects.all()
+    return render(request,'videolog.html',{"data":videos})
+
 
 #---------------------------------------------------Flutter Login-----------------------------------------------------------------------------------
 def login_flutter(request):
